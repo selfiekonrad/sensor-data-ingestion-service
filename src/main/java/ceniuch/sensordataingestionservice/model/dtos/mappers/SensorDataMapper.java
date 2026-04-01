@@ -1,4 +1,4 @@
-package ceniuch.sensordataingestionservice.model.mappers;
+package ceniuch.sensordataingestionservice.model.dtos.mappers;
 
 import ceniuch.sensordataingestionservice.model.SensorDataEvent;
 import ceniuch.sensordataingestionservice.model.dtos.SensorDataRequestDto;
