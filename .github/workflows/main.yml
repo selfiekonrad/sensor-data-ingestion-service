@@ -30,10 +30,16 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Get Project Version
+        id: get_version
+        run: |
+          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          echo "APP_VERSION=$VERSION" >> $GITHUB_ENV
+
       - name: Build Native Image with Paketo
         run: |
           mvn clean spring-boot:build-image \
-            -Dspring-boot.build-image.imageName=ghcr.io/selfiekonrad/native-image-resizer:latest
+            -Dspring-boot.build-image.imageName=ghcr.io/${{ github.repository }}:${{ env.APP_VERSION }}
 
       - name: Push Image to GHCR
-        run: docker push ghcr.io/selfiekonrad/native-image-resizer:latest
+        run: docker push ghcr.io/selfiekonrad/${{ github.repository }}:${{ env.APP_VERSION }}
