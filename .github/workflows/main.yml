@@ -42,4 +42,4 @@ jobs:
             -Dspring-boot.build-image.imageName=ghcr.io/${{ github.repository }}:${{ env.APP_VERSION }}
 
       - name: Push Image to GHCR
-        run: docker push ghcr.io/selfiekonrad/${{ github.repository }}:${{ env.APP_VERSION }}
+        run: docker push ghcr.io/${{ github.repository }}:${{ env.APP_VERSION }}
