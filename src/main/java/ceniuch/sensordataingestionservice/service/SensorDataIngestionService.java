@@ -17,7 +17,7 @@ import java.util.UUID;
 @Service
 public class SensorDataIngestionService {
     private final SensorDataMapper sensorDataMapper;
-    private RabbitTemplate rabbitTemplate;
+    private final RabbitTemplate rabbitTemplate;
 
     public SensorDataIngestionService(SensorDataMapper sensorDataMapper, RabbitTemplate rabbitTemplate) {
         this.sensorDataMapper = sensorDataMapper;
@@ -38,7 +38,7 @@ public class SensorDataIngestionService {
         log.info("Sensor data send: {}", sensorDataEvent);
 
         return new SensorDataResponseDto(
-                "",
+                "ACCEPTED",
                 sensorDataEvent.getEventId().toString(),
                 "Data queued for processing",
                 Instant.now()
