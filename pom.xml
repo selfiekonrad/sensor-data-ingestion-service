@@ -10,7 +10,7 @@
     </parent>
     <groupId>ceniuch</groupId>
     <artifactId>sensor-data-ingestion-service</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
     <name>sensor-data-ingestion-service</name>
     <description>sensor-data-ingestion-service</description>
     <url/>

@@ -3,6 +3,7 @@ package ceniuch.sensordataingestionservice.config;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.support.converter.JacksonJsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.amqp.support.converter.SimpleMessageConverter;
 import org.springframework.context.annotation.Bean;
@@ -34,7 +35,12 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public MessageConverter jsonMessageConverter() {
-        return new SimpleMessageConverter();
+    public MessageConverter jsonToMapMessageConverter() {
+        return new JacksonJsonMessageConverter(
+                "java.time.*",
+                "ceniuch.sensordataprocessingservice.model",
+                "java.util.*",
+                "java.lang.*"
+        );
     }
 }
