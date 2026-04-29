@@ -38,7 +38,7 @@ jobs:
 
       - name: Build Native Image
         run: |
-          mvn clean spring-boot:build-image \
+          mvn clean spring-boot:build-image -Pnative \
             -Dspring-boot.build-image.imageName=ghcr.io/${{ github.repository }}:${{ env.APP_VERSION }}
 
       - name: Push Image to GHCR
