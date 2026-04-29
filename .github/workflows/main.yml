@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '25'
-          distribution: 'GraalVM'
+          distribution: 'graalvm-community'
           cache: 'maven'
 
       - name: Log in to GitHub Container Registry
